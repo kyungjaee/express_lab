@@ -14,12 +14,17 @@ router.post('/', (req, res) => {
 // router.get('/:id', (req,res)=> {
     //res.send('Getting user data: ${req.parmas.id}');
 //});
-router.route("/:id").get('/:id',(req,res)=> {
+router.route("/:id").get((req,res)=> {
     res.send('Getting user data: ${req.params.id}');
 }).delete((req, res)=> {
     res.send('Deleting user with id: ${req.params.id}');
 }).put((req,res)=>{ 
     res.send('updating user with id: ${req.params.id}');
     });
+
+router.param("id", (req, res, next, id)=> {
+    console.log('Accessing user #${id}');
+    next(); 
+});    
 
 module.exports = router;
