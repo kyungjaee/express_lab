@@ -9,8 +9,8 @@ app.use(express.static("public"));
 app.use(express.urlencoded({extended:true}));
 // app.use(logger);
 
-app.use('/users, userRouter');
-app.use('/post', newPost);
+app.use('/users', userRouter);
+app.use('/post', postRouter);
 
 
 
@@ -19,9 +19,7 @@ app.get('/', (req, res)=> {
     res.render("index", {user: "Josh"});
 }); // this function will run when someone goes to the root folder
 
-app.get('/new', (req, res)=>{ 
-    res.render('users/new', {firstName: "please enter your first name"});
-});
+
 
 app.listen(3030);
 
